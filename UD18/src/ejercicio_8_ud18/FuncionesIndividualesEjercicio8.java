@@ -1,4 +1,5 @@
-package ejercicio_7_ud18;
+package ejercicio_8_ud18;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,21 +11,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 
 
-public class FuncionesIndividualesEjercicio7 {
+public class FuncionesIndividualesEjercicio8 {
 	
-	public void FuncionesIndividualesEjercicio7() {
+	public void FuncionesIndividualesEjercicio8() {
 		
 	}
 	
 	//-------------------------------------------------CREAR TABLAS EJERCICIO UD18--------------------------------------------------------
 	
-			public void createTableCientificosEjercicio7(Connection conexion,String db, String name) {
+			public void createTableProductosEjercicio8(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(Dni VARCHAR(8) PRIMARY KEY, NomApels NVARCHAR(255))";
+					String Query = "CREATE TABLE " + name+"(Codigo INT PRIMARY KEY AUTO_INCREMENT, Nombre NVARCHAR(100), Precio INT)";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");
@@ -35,13 +36,13 @@ public class FuncionesIndividualesEjercicio7 {
 				
 			}
 			
-			public void createTableProyectoEjercicio7(Connection conexion,String db, String name) {
+			public void createTableCajerosEjercicio8(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(Id CHAR(4) PRIMARY KEY,  Nombre NVARCHAR(255), Horas INT)";
+					String Query = "CREATE TABLE " + name+"(Codigo INT PRIMARY KEY AUTO_INCREMENT,  NomApels NVARCHAR(255))";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");
@@ -52,13 +53,30 @@ public class FuncionesIndividualesEjercicio7 {
 				
 			}
 			
-			public void createTableAsignadoAEjercicio7(Connection conexion,String db, String name) {
+			public void createTableMaquinaRegistradoraEjercicio8(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(Cientifico VARCHAR(8), Proyecto CHAR(4),PRIMARY KEY (Cientifico,Proyecto), FOREIGN KEY (Cientifico) REFERENCES Cientificos(Dni) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Proyecto) REFERENCES Proyectos(Id) ON DELETE CASCADE ON UPDATE CASCADE)";
+					String Query = "CREATE TABLE " + name+"(Codigo INT PRIMARY KEY AUTO_INCREMENT,  Piso INT)";
+					Statement st = conexion.createStatement();
+					st.executeUpdate(Query);
+					System.out.println("Tabla creada");
+					}catch(SQLException ex) {
+					System.out.println(ex.getMessage());
+					System.out.println("Error creando tabla.");
+				}
+				
+			}
+			
+			public void createTableVentaEjercicio8(Connection conexion,String db, String name) {
+				try {
+					String Querydb = "USE " +db+";";
+					Statement stdb= conexion.createStatement();
+					stdb.executeUpdate(Querydb);
+					
+					String Query = "CREATE TABLE " + name+"(Cajero INT, Maquina INT, Producto INT, PRIMARY KEY (Cajero,Maquina,Producto), FOREIGN KEY (Cajero) REFERENCES Cajeros(Codigo) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Producto) REFERENCES Productos(Codigo) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Maquina) REFERENCES Maquinas_Registradoras(Codigo) ON DELETE CASCADE ON UPDATE CASCADE)";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");
@@ -71,15 +89,15 @@ public class FuncionesIndividualesEjercicio7 {
 			
 			
 			//-------------------------------------------------INTRODUCIR DATOS EJERCICIO 1 UD18-----------------------------------------------------
-			public void insertDataCientificosEjercicio7(Connection conexion,String db, String table_name, String dni, String nom_apels) {
+			public void insertDataProductosEjercicio8(Connection conexion,String db, String table_name, String nombre, int precio) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "INSERT INTO "+table_name+"  (Dni,NomApels) VALUE("
-							+"\""+dni+"\", "
-							+"\""+nom_apels+"\");";
+					String Query = "INSERT INTO "+table_name+"  (Nombre,Precio) VALUE("
+							+"\""+nombre+"\", "
+							+"\""+precio+"\");";
 					
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
@@ -92,14 +110,13 @@ public class FuncionesIndividualesEjercicio7 {
 				}
 			}
 			
-			public void insertDataProyectoEjercicio7(Connection conexion,String db, String table_name, String id, String nombre) {
+			public void insertDataCajerosEjercicio8(Connection conexion,String db, String table_name, String nombre) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "INSERT INTO "+table_name+"  (Id,Nombre) VALUE("
-							+"\""+id+"\", "
+					String Query = "INSERT INTO "+table_name+"  (NomApels) VALUE("
 							+"\""+nombre+"\");";
 					
 					Statement st = conexion.createStatement();
@@ -113,15 +130,36 @@ public class FuncionesIndividualesEjercicio7 {
 				}
 			}
 			
-			public void insertDataAsignadoAEjercicio7(Connection conexion,String db, String table_name, String cientifcio, String proyecto) {
+			public void insertDataMaquinasRegistradorasEjercicio8(Connection conexion,String db, String table_name, int piso) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "INSERT INTO "+table_name+"  (Cientifico,Proyecto) VALUE("
-							+"\""+cientifcio+"\", "
-							+"\""+proyecto+"\");";
+					String Query = "INSERT INTO "+table_name+"  (Piso) VALUE("
+							+"\""+piso+"\");";
+					
+					Statement st = conexion.createStatement();
+					st.executeUpdate(Query);
+					
+					System.out.println("Datos almacenados correctamente");
+					
+				}catch(SQLException ex) {
+					System.out.println(ex.getMessage());
+					JOptionPane.showMessageDialog(null, "Error en el almacenamiento");
+				}
+			}
+			
+			public void insertDataVentaEjercicio8(Connection conexion,String db, String table_name, int cajero, int maquina, int producto) {
+				try {
+					String Querydb = "USE "+db+";";
+					Statement stdb = conexion.createStatement();
+					stdb.executeUpdate(Querydb);
+					
+					String Query = "INSERT INTO "+table_name+"  (Cajero,Maquina,Producto) VALUE("
+							+"\""+cajero+"\", "
+							+"\""+maquina+"\", "
+							+"\""+producto+"\");";
 					
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
@@ -136,7 +174,7 @@ public class FuncionesIndividualesEjercicio7 {
 			
 			//-------------------------------------------------VER DATOS EJERCICIO 1 UD18-----------------------------------------------------------
 			
-			public void getValuesCientificosEjercicio7(Connection conexion,String db, String table_name) {
+			public void getValuesProductosEjercicio8(Connection conexion,String db, String table_name) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
@@ -148,7 +186,7 @@ public class FuncionesIndividualesEjercicio7 {
 					resultSet = st.executeQuery(Query);
 					
 					while (resultSet.next()) {
-						System.out.println("Dni: " + resultSet.getString("Dni")+" "+"NomApels: "+ resultSet.getString("NomApels"));
+						System.out.println("Codigo: " + resultSet.getString("Codigo")+" "+"Nombre: "+ resultSet.getString("Nombre")+" "+"Precio: "+ resultSet.getString("Precio"));
 					}
 				
 					
@@ -158,7 +196,7 @@ public class FuncionesIndividualesEjercicio7 {
 				}
 			}
 			
-			public void getValuesProyectosEjercicio7(Connection conexion,String db, String table_name) {
+			public void getValuesCajerosEjercicio8(Connection conexion,String db, String table_name) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
@@ -169,7 +207,7 @@ public class FuncionesIndividualesEjercicio7 {
 					java.sql.ResultSet resultSet;
 					resultSet = st.executeQuery(Query);
 					while (resultSet.next()) {
-						System.out.println("Id: " + resultSet.getString("Id")+" "+"Nombre: "+ resultSet.getString("Nombre"));
+						System.out.println("Codigo: " + resultSet.getString("Codigo")+" "+"NomApels: "+ resultSet.getString("NomApels"));
 					}
 				
 					
@@ -179,7 +217,7 @@ public class FuncionesIndividualesEjercicio7 {
 				}
 			}
 			
-			public void getValuesAsignadoAEjercicio7(Connection conexion,String db, String table_name) {
+			public void getValuesMaquinasRegistradorasEjercicio8(Connection conexion,String db, String table_name) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
@@ -190,7 +228,28 @@ public class FuncionesIndividualesEjercicio7 {
 					java.sql.ResultSet resultSet;
 					resultSet = st.executeQuery(Query);
 					while (resultSet.next()) {
-						System.out.println("Cientifico: " + resultSet.getString("Cientifico")+" "+"Proyecto: "+ resultSet.getString("Proyecto"));
+						System.out.println("Codigo: " + resultSet.getString("Codigo")+" "+"Piso "+ resultSet.getString("Piso"));
+					}
+				
+					
+				}catch(SQLException ex) {
+					System.out.println(ex.getMessage());
+					JOptionPane.showMessageDialog(null, "Error en la adquisición de datos");
+				}
+			}
+			
+			public void getValuesVentaEjercicio8(Connection conexion,String db, String table_name) {
+				try {
+					String Querydb = "USE "+db+";";
+					Statement stdb = conexion.createStatement();
+					stdb.executeUpdate(Querydb);
+					
+					String Query = "SELECT * FROM "+table_name;
+					Statement st= conexion.createStatement();
+					java.sql.ResultSet resultSet;
+					resultSet = st.executeQuery(Query);
+					while (resultSet.next()) {
+						System.out.println("Cajero: " + resultSet.getString("Cajero")+" "+"Maquina: "+ resultSet.getString("Maquina")+" "+"Producto: "+ resultSet.getString("Producto"));
 					}
 				
 					
@@ -200,13 +259,13 @@ public class FuncionesIndividualesEjercicio7 {
 				}
 			}
 			//-------------------------------------------------ELIMINAR REGISTROS--------------------------------------------------------------------
-			public void deleteRecordProyectoEjercicio7(Connection conexion,String db, String table_name, String id) {
+			public void deleteRecordCajerosEjercicio8(Connection conexion,String db, String table_name, int id) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "DELETE FROM "+table_name+" WHERE Id = \""+id+"\"";
+					String Query = "DELETE FROM "+table_name+" WHERE Codigo = \""+id+"\"";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Se ha eliminado el registro correctamente");

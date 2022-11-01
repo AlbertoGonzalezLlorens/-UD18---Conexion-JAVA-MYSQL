@@ -142,7 +142,7 @@ public class FuncionesIndividualesEjercicio3 {
 				}
 			}
 			//-------------------------------------------------ELIMINAR REGISTROS--------------------------------------------------------------------
-			public void deleteRecordDepartamentosEjercicio3(Connection conexion,String db, String table_name, int ID) {
+			public void deleteRecordAlmacenesEjercicio3(Connection conexion,String db, String table_name, int ID) {
 				try {
 					String Querydb = "USE "+db+";";
 					Statement stdb = conexion.createStatement();

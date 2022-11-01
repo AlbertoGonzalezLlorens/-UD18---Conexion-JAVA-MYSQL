@@ -26,7 +26,7 @@ public class Ejercicio3Ud18App {
 		funcion_individual.getValuesAlmacenesEjercicio3(conexion,"Ejercicio3_UD18","Almacenes");
 		System.out.println("Datos Cajas");
 		funcion_individual.getValuesCajasEjercicio3(conexion,"Ejercicio3_UD18","Cajas");
-		funcion_individual.deleteRecordDepartamentosEjercicio3(conexion, "Ejercicio3_UD18", "Almacenes", 2);
+		funcion_individual.deleteRecordAlmacenesEjercicio3(conexion, "Ejercicio3_UD18", "Almacenes", 2);
 		funcion.closeConnection(conexion);
 
 	}

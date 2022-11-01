@@ -20,9 +20,9 @@ public class Ejercicio_2_Ud18App {
 		funcion_individual.insertDataDepartamentosEjercicio2(conexion,"Ejercicio2_UD18", "Departamentos", "Departamento 1",1000);
 		funcion_individual.insertDataDepartamentosEjercicio2(conexion,"Ejercicio2_UD18", "Departamentos", "Departamento 2",2000);
 		funcion_individual.insertDataDepartamentosEjercicio2(conexion,"Ejercicio2_UD18", "Departamentos", "Departamento 3",3000);
-		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "11111111A", "Nombre 1","Apellido 1",1);
-		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "11111111B", "Nombre 2","Apellido 2",1);
-		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "11111111C", "Nombre 3","Apellido 3",2);
+		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "1111111A", "Nombre 1","Apellido 1",1);
+		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "1111111B", "Nombre 2","Apellido 2",1);
+		funcion_individual.insertDataEmpleadosEjercicio2(conexion,"Ejercicio2_UD18", "Empleados", "1111111C", "Nombre 3","Apellido 3",2);
 		System.out.println("Datos Departamento");
 		funcion_individual.getValuesDepartamentosEjercicio2(conexion,"Ejercicio2_UD18","Departamentos");
 		System.out.println("Datos Articulos");

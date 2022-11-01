@@ -30,7 +30,7 @@ public class Ejercicio6Ud18App {
 		funcion_individual.getValuesProveedoresEjercicio6(conexion,"Ejercicio6_UD18","Proveedores");
 		System.out.println("Datos Suministra");
 		funcion_individual.getValuesSuministraEjercicio6(conexion,"Ejercicio6_UD18","Suministra");
-		funcion_individual.deleteRecordPiezasEjercicio6(conexion, "Ejercicio5_UD18", "Peliculas", 2);
+		funcion_individual.deleteRecordPiezasEjercicio6(conexion, "Ejercicio6_UD18", "Piezas", 2);
 		funcion.closeConnection(conexion);
 	}
 

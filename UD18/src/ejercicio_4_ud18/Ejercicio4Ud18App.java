@@ -24,7 +24,7 @@ public class Ejercicio4Ud18App {
 		funcion_individual.getValuesPeliculasEjercicio4(conexion,"Ejercicio4_UD18","Peliculas");
 		System.out.println("Datos Salas");
 		funcion_individual.getValuesSalasEjercicio4(conexion,"Ejercicio4_UD18","Salas");
-		funcion_individual.deleteRecordDepartamentosEjercicio4(conexion, "Ejercicio4_UD18", "Peliculas", 2);
+		funcion_individual.deleteRecordPeliculasEjercicio4(conexion, "Ejercicio4_UD18", "Peliculas", 2);
 		funcion.closeConnection(conexion);
 
 		
