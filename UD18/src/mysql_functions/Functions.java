@@ -19,7 +19,7 @@ public class Functions {
 	public Connection createConexion() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conexion=DriverManager.getConnection("jdbc:mysql://192.168.1.139:3306?useTimezone=true&serverTimezone=UTC","remote","753qsc@951tdZ");
+			Connection conexion=DriverManager.getConnection("jdbc:mysql://192.168.1.139:3306?useTimezone=true&serverTimezone=UTC","remote","Insertar contraseña");
 			System.out.println("Server Connected");
 			return conexion;
 		}catch(SQLException | ClassNotFoundException ex) {

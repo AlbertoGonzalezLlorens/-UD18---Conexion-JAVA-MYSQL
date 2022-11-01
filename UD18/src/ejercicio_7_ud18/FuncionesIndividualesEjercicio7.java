@@ -1,5 +1,4 @@
-package ejercicio_6_ud18;
-
+package ejercicio_7_ud18;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,21 +10,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 
 
-public class FuncionesIndividualesEjercicio6 {
+public class FuncionesIndividualesEjercicio7 {
 	
-	public void FuncionesIndividualesEjercicio6() {
+	public void FuncionesIndividualesEjercicio7() {
 		
 	}
 	
 	//-------------------------------------------------CREAR TABLAS EJERCICIO UD18--------------------------------------------------------
 	
-			public static void createTablePiezasEjercicio6(Connection conexion,String db, String name) {
+			public static void createTableCientificosEjercicio6(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(Codigo INT PRIMARY KEY AUTO_INCREMENT, Nombre NVARCHAR(100))";
+					String Query = "CREATE TABLE " + name+"(Dni VARCHAR(8) PRIMARY KEY, NomApels NVARCHAR(255))";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");
@@ -36,13 +35,13 @@ public class FuncionesIndividualesEjercicio6 {
 				
 			}
 			
-			public static void createTableProveedoresEjercicio6(Connection conexion,String db, String name) {
+			public static void createTableProyectoEjercicio6(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(Id CHAR(4) PRIMARY KEY,  Nombre NVARCHAR(100))";
+					String Query = "CREATE TABLE " + name+"(Id CHAR(4) PRIMARY KEY,  Nombre NVARCHAR(255), Horas INT)";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");
@@ -53,13 +52,13 @@ public class FuncionesIndividualesEjercicio6 {
 				
 			}
 			
-			public static void createTableSuministraEjercicio6(Connection conexion,String db, String name) {
+			public static void createTableAsignadoAEjercicio6(Connection conexion,String db, String name) {
 				try {
 					String Querydb = "USE " +db+";";
 					Statement stdb= conexion.createStatement();
 					stdb.executeUpdate(Querydb);
 					
-					String Query = "CREATE TABLE " + name+"(CodigoPieza INT, IdProveedor CHAR(4), Precio INT,PRIMARY KEY (CodigoPieza,IdProveedor), FOREIGN KEY (CodigoPieza) REFERENCES Piezas(Codigo) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (IdProveedor) REFERENCES Proveedores(Id) ON DELETE CASCADE ON UPDATE CASCADE)";
+					String Query = "CREATE TABLE " + name+"(Cientifico VARCHAR(8), Proyecto CHAR(4),PRIMARY KEY (Cientifico,Proyecto), FOREIGN KEY (Cientifico) REFERENCES Cientificos(Dni) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Proyecto) REFERENCES Proyectos(Id) ON DELETE CASCADE ON UPDATE CASCADE)";
 					Statement st = conexion.createStatement();
 					st.executeUpdate(Query);
 					System.out.println("Tabla creada");

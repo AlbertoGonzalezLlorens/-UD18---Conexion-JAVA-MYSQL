@@ -25,12 +25,12 @@ public class Ejercicio6Ud18App {
 		funcion_individual.insertDataSuministraEjercicio6(conexion,"Ejercicio6_UD18", "Suministra",1,"BBB2",20);
 		funcion_individual.insertDataSuministraEjercicio6(conexion,"Ejercicio6_UD18", "Suministra",2,"CCC3",30);
 		System.out.println("Datos Piezas");
-		funcion_individual.getValuesDespachosEjercicio5(conexion,"Ejercicio6_UD18","Piezas");
+		funcion_individual.getValuesPiezasEjercicio6(conexion,"Ejercicio6_UD18","Piezas");
 		System.out.println("Datos Proveedores");
-		funcion_individual.getValuesDirectoresEjercicio5(conexion,"Ejercicio6_UD18","Proveedores");
+		funcion_individual.getValuesProveedoresEjercicio6(conexion,"Ejercicio6_UD18","Proveedores");
 		System.out.println("Datos Suministra");
-		funcion_individual.getValuesDirectoresEjercicio5(conexion,"Ejercicio6_UD18","Suministra");
-		funcion_individual.deleteRecordDespachosEjercicio5(conexion, "Ejercicio5_UD18", "Peliculas", 2);
+		funcion_individual.getValuesSuministraEjercicio6(conexion,"Ejercicio6_UD18","Suministra");
+		funcion_individual.deleteRecordPiezasEjercicio6(conexion, "Ejercicio5_UD18", "Peliculas", 2);
 		funcion.closeConnection(conexion);
 	}
 
